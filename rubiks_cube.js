@@ -97,6 +97,21 @@ export default class RubiksCube extends HTMLElement {
     }
 
     _attachCellListeners(cell) {
+        let currentColor = cell.style.backgroundColor;
+    
+        cell.addEventListener('click', () => {
+            currentColor = this.color; // Update currentColor on click
+            cell.style.backgroundColor = currentColor;
+        });
+    
+        cell.addEventListener('mouseover', () => {
+            cell.style.backgroundColor = this.color;
+        });
+    
+        cell.addEventListener('mouseout', () => {
+            cell.style.backgroundColor = currentColor;
+        });
+    
         cell.addEventListener('click', () => {
             cell.style.backgroundColor = this.color;
         });
