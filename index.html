@@ -1,3 +1,7 @@
+<head>
+    <script src="index.js" type="module"></script>
+</head>
+
 <body>
     <style>
         body {
@@ -5,50 +9,6 @@
 
             margin: auto;
             width: var(--cube-size);
-        }
-
-        #container {
-            height: var(--cube-size);
-            transform: perspective(15cm) rotateX(-25deg) rotateY(25deg);
-            transform-style: preserve-3d;
-            margin: 100px 0;
-            width: var(--cube-size);
-        }
-
-        .face {
-            display: flex;
-            flex-direction: column;
-            height: var(--cube-size);
-            position: absolute;
-            width: var(--cube-size);
-        }
-
-        .top {
-            transform: rotateX(90deg) translate3d(0, 0, calc(var(--cube-size) / 2));
-        }
-
-        .left {
-            transform: rotateY(-90deg) translate3d(0, 0, calc(var(--cube-size) / 2));
-        }
-
-        .front {
-            transform: translate3d(0, 0, calc(var(--cube-size) / 2));
-        }
-
-        .row {
-            display: flex;
-            flex-direction: row;
-            flex-grow: 1;
-            height: calc(var(--cube-size) / 3);
-        }
-
-        .cell {
-            background-color: lightgray;
-            border-radius: 4px;
-            box-sizing: border-box;
-            border: 2px solid black;
-            flex-grow: 1;
-            margin: 1px;
         }
 
         .color-picker {
@@ -71,59 +31,7 @@
         }
     </style>
 
-    <div id="container">
-        <div class="face front">
-            <div class="row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-        </div>
-        <div class="face top">
-            <div class="row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-        </div>
-        <div class="face left">
-            <div class="row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-            <div class="row">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-            </div>
-        </div>
-    </div>
+    <rubiks-cube id="rubiks-cube"></rubiks-cube>
 
     <div class="color-picker">
         <div class="color selected" style="background-color: red"></div>
@@ -135,38 +43,4 @@
     </div>
 
     <button id="flip">Flip</button>
-
-    <script>
-        let selectedColor = 'red';
-        let selectedColorElement = document.querySelector('.color.selected');
-        const colors = document.getElementsByClassName('color');
-        for (const color of colors) {
-            color.addEventListener('click', () => {
-                selectedColorElement.classList.remove('selected');
-                selectedColorElement = color;
-                selectedColorElement.classList.add('selected');
-
-                selectedColor = color.style.backgroundColor;
-            });
-        }
-
-        const cells = document.getElementsByClassName('cell');
-        for (const cell of cells) {
-            cell.addEventListener('click', () => {
-                cell.style.backgroundColor = selectedColor;
-            });
-            cell.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                cell.style.backgroundColor = null;
-                return false;
-            });
-        }
-
-        const container = document.getElementById('container');
-        let currentRotation = 25;
-        document.getElementById('flip').addEventListener('click', () => {
-            currentRotation = 90 - currentRotation;
-            container.style.transform = `perspective(15cm) rotateX(-25deg) rotateY(${currentRotation}deg)`;
-        });
-    </script>
 </body>
