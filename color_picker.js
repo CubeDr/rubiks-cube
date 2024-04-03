@@ -12,12 +12,18 @@ const STYLE = `
     border: 2px solid #555;
     border-radius: 100%;
     box-sizing: border-box;
+    cursor: pointer;
     flex-grow: 1;
     margin: 8px;
+    transition: transform 120ms ease;
 }
 
 .color.selected {
     border: 2px solid gold;
+}
+
+.color:hover {
+    transform: scale(1.1);
 }
 `;
 
