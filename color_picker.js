@@ -10,7 +10,7 @@ const STYLE = `
 
 .color {
     border: 2px solid #555;
-    border-radius: 100%;
+    border-radius: 50%;
     box-sizing: border-box;
     cursor: pointer;
     flex-grow: 1;
@@ -23,7 +23,8 @@ const STYLE = `
 }
 
 .color:hover {
-    transform: scale(1.1);
+    border-radius: 20%;
+    transform: scale(1.5);
 }
 `;
 
