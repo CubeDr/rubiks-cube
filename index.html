@@ -10,37 +10,9 @@
             margin: auto;
             width: var(--cube-size);
         }
-
-        .color-picker {
-            display: flex;
-            flex-direction: row;
-            height: calc(250px / 6);
-            width: 250px;
-        }
-
-        .color {
-            border: 2px solid #555;
-            border-radius: 100%;
-            box-sizing: border-box;
-            flex-grow: 1;
-            margin: 8px;
-        }
-
-        .color.selected {
-            border: 2px solid gold;
-        }
     </style>
 
     <rubiks-cube id="rubiks-cube"></rubiks-cube>
-
-    <div class="color-picker">
-        <div class="color selected" style="background-color: red"></div>
-        <div class="color" style="background-color: blue"></div>
-        <div class="color" style="background-color: orange"></div>
-        <div class="color" style="background-color: green"></div>
-        <div class="color" style="background-color: white"></div>
-        <div class="color" style="background-color: yellow"></div>
-    </div>
-
+    <color-picker id="color-picker"></color-picker>
     <button id="flip">Flip</button>
 </body>

@@ -1,3 +1,5 @@
+import { addStyle, createElement } from './custom_element_utils.js';
+
 const STYLE = `
 body {
     --cube-size: 200px;
@@ -62,9 +64,7 @@ export default class RubiksCube extends HTMLElement {
 
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
-        const style = document.createElement('style');
-        style.textContent = STYLE;
-        shadow.appendChild(style);
+        addStyle(shadow, STYLE);
         shadow.appendChild(this._container);
 
         // Add faces
@@ -106,16 +106,6 @@ export default class RubiksCube extends HTMLElement {
             return false;
         });
     }
-}
-
-/**
- * Create a HTMLDivElement with given class names.
- * @param {string[]} classNames 
- */
-function createElement(...classNames) {
-    const element = document.createElement('div');
-    element.classList.add(...classNames);
-    return element;
 }
 
 customElements.define('rubiks-cube', RubiksCube);
