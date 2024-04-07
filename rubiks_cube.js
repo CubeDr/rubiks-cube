@@ -118,6 +118,7 @@ export default class RubiksCube extends HTMLElement {
         cell.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             cell.style.backgroundColor = null;
+            currentColor = null;
             return false;
         });
     }
